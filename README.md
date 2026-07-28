@@ -1,12 +1,6 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
-
-# Run and deploy your AI Studio app
+# St. Jude Clinic Shift Management OS
 
 This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/1924975e-bd27-4295-9fe8-9807dd44c6ef
 
 ## Stack Choice
 
@@ -23,7 +17,6 @@ To run the full stack locally with a single command, open your terminal and run:
 ```bash
 npm install && npm run dev
 ```
-*(Make sure you have set `GEMINI_API_KEY` in `.env.local` if testing AI features).*
 
 ## Testing
 
