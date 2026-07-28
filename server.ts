@@ -81,6 +81,30 @@ async function startServer() {
     res.status(201).json(newUser);
   });
 
+  // Update Existing User
+  app.put('/api/users/:id', (req, res) => {
+    const { id } = req.params;
+    const { name, email, password, role, profession, phone } = req.body;
+
+    if (!name || !email || !role) {
+      return res.status(400).json({ error: 'Name, email, and role are required.' });
+    }
+
+    const existingUser = clinicStore.getUserById(id);
+    if (!existingUser) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+
+    // Check email collision
+    const existingEmail = clinicStore.getUserByEmail(email);
+    if (existingEmail && existingEmail.id !== id) {
+      return res.status(409).json({ error: 'Another user is already using this email.' });
+    }
+
+    const updatedUser = clinicStore.updateUser(id, { name, email, password, role, profession, phone });
+    res.json(updatedUser);
+  });
+
   // Get Shifts with claims & missing roles
   app.get('/api/shifts', (req, res) => {
     const shifts = clinicStore.getShiftsWithClaims();
