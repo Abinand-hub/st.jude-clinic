@@ -1,0 +1,12 @@
+Title, Date, Start Time, End Time, Doctors Req, Nurses Req, Receptionists Req, Notes
+Morning ER & Triage, 2026-08-03, 08:00, 16:00,1,2,1, Urgent coverage needed for Monday morning peak
+Afternoon Ward Duty, 2026-08-03, 16:00, 00:00,1,1,1, Evening shift
+Night ER Standby, 08/04/2026, 00:00, 08:00,1,2,0, Overnight shift
+Morning ER & Triage, 2026-08-03, 08:00, 16:00,1,2,1, Duplicate shift row from old system
+Bad Date Shift, 2026-02-31, 09:00, 17:00,1,1,1, February 31 does not exist
+Impossible Time Shift, 2026-08-05, 17:00, 09:00,2,2,1, End time is before start time on same day
+Pediatrics Desk, Aug 5 2026, 8am, 4pm,1,2,1, Midweek clinic coverage
+ICU Intensive Care, 2026.08.06, 07:00, 19:00,2,3,1, 12-hour intensive shift
+Outpatient Clinic, 2026-08-07, 09:00, 17:00,1,1,2, Friday outpatient clinic
+Invalid Requirements Shift, 2026-08-08, 10:00, 14:00,-1, ABC,0, Negative and non-numeric requirements
+Weekend Emergency, 2026-08-08, 08:00, 20:00,2,4,2, Weekend emergency team

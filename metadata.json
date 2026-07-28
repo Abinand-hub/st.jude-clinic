@@ -1,0 +1,6 @@
+{
+  "name": "St. Jude Clinic Shift Manager",
+  "description": "Shift scheduling, staff claim management, dirty CSV data import engine, and real-time coverage dashboard for St. Jude Clinic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
