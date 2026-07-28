@@ -8,16 +8,30 @@ This contains everything you need to run your app locally.
 
 View your app in AI Studio: https://ai.studio/apps/1924975e-bd27-4295-9fe8-9807dd44c6ef
 
-## Run Locally
+## Stack Choice
 
-**Prerequisites:**  Node.js
+- **Frontend:** React 19, TypeScript, Tailwind CSS v4, Lucide React (Icons).
+- **Backend:** Express (Node.js), TypeScript.
+- **Build Tool:** Vite.
 
+## Local Setup
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+**Prerequisites:** Node.js v18+
+
+To run the full stack locally with a single command, open your terminal and run:
+
+```bash
+npm install && npm run dev
+```
+*(Make sure you have set `GEMINI_API_KEY` in `.env.local` if testing AI features).*
+
+## Testing
+
+Tests are entirely optional for this project. However, static analysis and type-checking can be executed with a single command:
+
+```bash
+npm run lint
+```
 
 ## Deployment & Live URL
 
