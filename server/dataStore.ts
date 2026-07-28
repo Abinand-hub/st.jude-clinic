@@ -163,6 +163,20 @@ class ClinicDataStore {
     return this.users.get(id);
   }
 
+  public updateUser(id: string, userData: Partial<User>): User | undefined {
+    const existingUser = this.users.get(id);
+    if (!existingUser) return undefined;
+
+    const updatedUser = {
+      ...existingUser,
+      ...userData,
+      id // Ensure ID cannot be changed
+    };
+
+    this.users.set(id, updatedUser);
+    return updatedUser;
+  }
+
   public getUserByEmail(email: string): User | undefined {
     const cleanEmail = email.toLowerCase().trim();
     return Array.from(this.users.values()).find(u => u.email.toLowerCase() === cleanEmail);
