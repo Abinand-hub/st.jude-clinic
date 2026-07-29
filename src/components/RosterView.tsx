@@ -1,12 +1,14 @@
 import React from 'react';
 import { ShiftWithClaims } from '../types.js';
 import { useAuth } from '../context/AuthContext.js';
-import { Users, Stethoscope, HeartPulse, UserCheck, ShieldAlert, Phone, Mail, UserPlus } from 'lucide-react';
+import { Users, Stethoscope, HeartPulse, UserCheck, ShieldAlert, Phone, Mail, UserPlus, Edit2 } from 'lucide-react';
 import { AddStaffModal } from './AddStaffModal.js';
+import { EditStaffModal } from './EditStaffModal.js';
 
 export const RosterView: React.FC<{ shifts: ShiftWithClaims[] }> = ({ shifts }) => {
   const { users, refreshUsers, isManager } = useAuth();
   const [isAddingStaff, setIsAddingStaff] = React.useState(false);
+  const [editingUser, setEditingUser] = React.useState<any>(null);
 
   // Calculate total claimed shifts per user across all shifts
   const getClaimCount = (userId: string) => {
@@ -76,8 +78,16 @@ export const RosterView: React.FC<{ shifts: ShiftWithClaims[] }> = ({ shifts }) 
                   <span className="text-xs font-bold text-slate-900 block">{claimCount} Shifts</span>
                   <span className="text-[10px] text-slate-400">Claimed</span>
                 </div>
+                {isManager && (
+                  <button
+                    onClick={() => setEditingUser(u)}
+                    className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                    title="Edit Details"
+                  >
+                    <Edit2 className="w-4 h-4" />
+                  </button>
+                )}
               </div>
-
               <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
                 <div className="flex items-center gap-2 text-slate-500">
                   <Mail className="w-3.5 h-3.5" />
@@ -104,6 +114,14 @@ export const RosterView: React.FC<{ shifts: ShiftWithClaims[] }> = ({ shifts }) 
       {isAddingStaff && (
         <AddStaffModal 
           onClose={() => setIsAddingStaff(false)}
+          onRefresh={refreshUsers}
+        />
+      )}
+
+      {editingUser && (
+        <EditStaffModal
+          user={editingUser}
+          onClose={() => setEditingUser(null)}
           onRefresh={refreshUsers}
         />
       )}
